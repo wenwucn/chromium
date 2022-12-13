@@ -190,7 +190,9 @@ class Chromium {
       return Promise.resolve('/tmp/chromium');
     }
 
-    const input = join(__dirname, '..', 'bin');
+    // const input = join(__dirname, '..', 'bin');
+    const input = __dirname === '/var/task' ? '/opt/nodejs/node_modules/@sparticuz/chromium/bin' : (0, path_1.join)(__dirname, "..", "bin");
+
     const promises = [
       LambdaFS.inflate(`${input}/chromium.br`),
       LambdaFS.inflate(`${input}/swiftshader.tar.br`),
